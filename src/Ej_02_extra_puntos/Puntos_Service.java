@@ -13,6 +13,7 @@ http://www.matematicatuya.com/GRAFICAecuaciones/S1a.html
 */
 
 public class Puntos_Service {
+	
 	Scanner leer = new Scanner(System.in);
 
 	public Puntos crearPuntos() {
