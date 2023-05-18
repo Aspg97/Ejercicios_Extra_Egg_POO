@@ -1,11 +1,8 @@
 package Ej_04_extra_digito_verificador;
 
-/*
-Dígito Verificador. Crear una clase NIF que se usará para mantener DNIs con su
-correspondiente letra (NIF). Los atributos serán el número de DNI (entero largo) y la
-letra (String o char) que le corresponde. Dispondrá de los siguientes métodos:
- Métodos getters y setters para el número de DNI y la letra.
+import java.util.Scanner;
 
+/*
  Método crearNif(): le pide al usuario el DNI y con ese DNI calcula la letra que le
 corresponderá. Una vez calculado, le asigna la letra que le corresponde según el
 resultado del calculo.
@@ -18,50 +15,34 @@ funciona de la siguiente manera: Para calcular la letra se toma el resto de divi
 número de DNI por 23 (el resultado debe ser un número entre 0 y 22). El método debe
 buscar en un array (vector) de caracteres la posición que corresponda al resto de la
 división para obtener la letra correspondiente. La tabla de caracteres es la siguiente:
+*/
 
-POSICIÓN LETRA
+public class NIF_service {
 
-0 T
-1 R
-2 W
-3 A
-4 G
-5 M
-6 Y
-7 F
-8 P
-9 D
-10 X
-11 B
-12 N
-13 J
-14 Z
-15 S
-16 Q
-17 V
-18 H
-19 L
-20 C
-21 K
-22 E*/
+	Scanner leer = new Scanner(System.in);
 
-public class NIF {
-	private long dni;
-	private char letra;
-
-	public long getDni() {
-		return dni;
+	public NIF crearNif() {
+		long dni;
+		NIF nif = new NIF();
+		System.out.println("Ingrese su DNI");
+		dni = leer.nextLong();
+		nif.setDni(dni);
+		return nif;
 	}
 
-	public void setDni(long dni) {
-		this.dni = dni;
-	}
-
-	public char getLetra() {
-		return letra;
-	}
-
-	public void setLetra(char letra) {
-		this.letra = letra;
+	public void mostrar(NIF nif) {
+		int posicion = (int) nif.getDni() % 23;
+		char letra[] = new char[] { 'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q',
+				'V', 'H', 'L', 'C', 'K', 'E' };
+		nif.setLetra(letra[posicion]);
+		String dni = String.valueOf(nif.getDni());
+		int ceroFaltantes = 8;
+		if (dni.length() < 8) {
+			ceroFaltantes -= dni.length();
+			for (int i = 0; i < ceroFaltantes; i++) {
+				dni = "0".concat(dni);
+			}
+		}
+		System.out.println("Su NIF correspondiente es: " + dni + "-" + nif.getLetra());
 	}
 }
