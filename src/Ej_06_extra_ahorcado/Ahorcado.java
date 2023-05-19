@@ -34,13 +34,11 @@ public class Ahorcado {
 	public Ahorcado() {
 	}
 
-
 	public Ahorcado(char[] palabra, int jugadasMaxima) {
 		this.palabra = palabra;
 		this.jugadasMaxima = jugadasMaxima;
-		this.letrasEncontradas=0;
+		this.letrasEncontradas = 0;
 	}
-
 
 	public char[] getPalabra() {
 		return palabra;
